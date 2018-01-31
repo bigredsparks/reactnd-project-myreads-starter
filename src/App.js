@@ -332,8 +332,12 @@ class BooksApp extends React.Component {
           "id": "1wy49i-gQjIC",
           "shelf": "read"
       }
-  ]
+    ]
 
+  }
+
+  moveBook(book) {
+    console.log('move book:' + book.title)
   }
 
   render() {
@@ -361,7 +365,10 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <ListBooks books={this.state.books}/>
+          <ListBooks 
+            books={this.state.books}
+            onMoveBook={this.moveBook}
+          />
         )}
       </div>
     )

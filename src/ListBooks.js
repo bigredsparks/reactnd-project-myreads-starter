@@ -11,11 +11,12 @@ const bookShelves = [
 
 class ListBooks extends Component {
   static propType = {
-    books: PropTypes.arrayOf(PropTypes.object).isRequired
+    books: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onMoveBook: PropTypes.func.isRequired
   }
 
   render() {
-    const { books } = this.props
+    const { books, onMoveBook } = this.props
 
     return (
       <div className="list-books">
@@ -25,7 +26,11 @@ class ListBooks extends Component {
         <div className="list-books-content">
           <div>
             {bookShelves.map((shelf) => (
-              <Bookshelf shelf={shelf} books={books} />
+              <Bookshelf 
+                shelf={shelf} 
+                books={books}
+                onMoveBook={onMoveBook} 
+              />
             ))}
           </div>
         </div>

@@ -11,11 +11,12 @@ const titleFromShelf = {
 class Bookshelf extends Component {
   static propType = {
     shelf: PropTypes.string.isRequired,
-    books: PropTypes.arrayOf(PropTypes.object).isRequired
+    books: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onMoveBook: PropTypes.func.isRequired
   }
 
   render() {
-    const { shelf, books } = this.props
+    const { shelf, books, onMoveBook } = this.props
     const shownBooks = books.filter((book) => book.shelf === shelf)
     const bookshelfTitle = titleFromShelf[shelf]
 
@@ -26,7 +27,10 @@ class Bookshelf extends Component {
           <ol className="books-grid">
             {shownBooks.map((book) => (
               <li key={book.id}>
-                <Book book={book} />
+                <Book 
+                  book={book} 
+                  onMoveBook={onMoveBook} 
+                />
               </li>
             ))}
           </ol>
