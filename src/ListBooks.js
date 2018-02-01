@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Bookshelf from './Bookshelf'
-import BookshelfChanger from './BookshelfChanger'
 
 const bookShelves = [
   "currentlyReading",
@@ -26,10 +25,11 @@ class ListBooks extends Component {
         <div className="list-books-content">
           <div>
             {bookShelves.map((shelf) => (
-              <Bookshelf 
-                shelf={shelf} 
+              <Bookshelf
+                key={shelf}
+                shelf={shelf}
                 books={books}
-                onMoveBook={onMoveBook} 
+                onMoveBook={onMoveBook}
               />
             ))}
           </div>

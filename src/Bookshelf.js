@@ -21,15 +21,15 @@ class Bookshelf extends Component {
     const bookshelfTitle = titleFromShelf[shelf]
 
     return (
-      <div className="bookshelf">
+      <div className="bookshelf" key={shelf}>
         <h2 className="bookshelf-title">{bookshelfTitle}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
             {shownBooks.map((book) => (
               <li key={book.id}>
-                <Book 
-                  book={book} 
-                  onMoveBook={onMoveBook} 
+                <Book
+                  book={book}
+                  onMoveBook={onMoveBook}
                 />
               </li>
             ))}

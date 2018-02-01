@@ -336,8 +336,14 @@ class BooksApp extends React.Component {
 
   }
 
-  moveBook(book) {
-    console.log('move book:' + book.title)
+  moveBook = (book) => {
+    this.setState((prevState) => {
+      // remove moved book from list of books
+      const newBooks = prevState.books.filter((b) => b.id !== book.id)
+      // add moved book back into list
+      newBooks.push(book)
+      return { books: newBooks }
+    })
   }
 
   render() {
@@ -365,7 +371,7 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <ListBooks 
+          <ListBooks
             books={this.state.books}
             onMoveBook={this.moveBook}
           />
