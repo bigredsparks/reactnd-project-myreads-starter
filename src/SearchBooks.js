@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Book from './Book'
+import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends Component {
   static propType = {
@@ -10,7 +11,7 @@ class SearchBooks extends Component {
   }
 
   state = {
-    query : ''
+    query : '',
   }
 
   updateQuery = (query) => {
