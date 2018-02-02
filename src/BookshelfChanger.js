@@ -16,11 +16,13 @@ class BookshelfChanger extends Component {
   render() {
     const { book } = this.props
 
+    //console.log('book:' + book.title + " shelf:" + book.shelf)
+
     return (
       <div className="book-shelf-changer">
       <select
         onChange={(event) => this.changeShelf(event.target.value)}
-        value={book.shelf}
+        value={book.shelf || 'none'}
         >
         <option value="none" disabled>Move to...</option>
         <option value="currentlyReading">Currently Reading</option>
