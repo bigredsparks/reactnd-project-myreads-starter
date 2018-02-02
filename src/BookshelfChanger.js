@@ -7,9 +7,9 @@ class BookshelfChanger extends Component {
     onMoveBook: PropTypes.func.isRequired
   }
 
-  changeShelf = (e) => {
+  changeShelf = (newShelf) => {
     const { book, onMoveBook } = this.props
-    book.shelf = e.target.value
+    book.shelf = newShelf
     onMoveBook(book)
   }
 
@@ -18,7 +18,10 @@ class BookshelfChanger extends Component {
 
     return (
       <div className="book-shelf-changer">
-      <select onChange={this.changeShelf} value={book.shelf} >
+      <select
+        onChange={(event) => this.changeShelf(event.target.value)}
+        value={book.shelf}
+        >
         <option value="none" disabled>Move to...</option>
         <option value="currentlyReading">Currently Reading</option>
         <option value="wantToRead">Want to Read</option>
