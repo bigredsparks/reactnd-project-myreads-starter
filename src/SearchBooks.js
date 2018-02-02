@@ -12,21 +12,38 @@ class SearchBooks extends Component {
 
   state = {
     query : '',
+    matchedBooks : []
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() })
+    if ( query ) {
+      BooksAPI.search(query).then((books) => {
+        console.log(books)
+
+        this.setState({
+          query: query.trim(),
+          matchedBooks: books.error ? [] : books
+        })
+      })
+    } else {
+      this.setState({
+        query: '',
+        matchedBooks: []
+      })
+    }
   }
 
   render() {
     const { books, onMoveBook } = this.props
-    const { query } = this.state
+    const { matchedBooks } = this.state
 
-    let shownBooks = []
-    if ( query ) {
-      const pattern = new RegExp(query, 'i')
-      shownBooks = books.filter((book) => pattern.test(book.title))
-    }
+    const shownBooks = matchedBooks
+
+    //let shownBooks = []
+    // if ( query ) {
+    //   const pattern = new RegExp(query, 'i')
+    //   shownBooks = books.filter((book) => pattern.test(book.title))
+    // }
 
     return (
       <div className="search-books">
