@@ -45,7 +45,7 @@ class SearchBooks extends Component {
     const { books, onMoveBook } = this.props
     const { matchedBooks } = this.state
 
-    const shownBooks = mergeBooks(matchBooks, books)
+    const shownBooks = this.mergeBooks(matchedBooks, books)
 
     return (
       <div className="search-books">
