@@ -3,13 +3,8 @@ import { Route } from 'react-router-dom'
 import ListBooks from './ListBooks'
 import SearchBooks from './SearchBooks'
 import * as BooksAPI from './BooksAPI'
+import * as Constants from './Constants'
 import './App.css'
-
-const bookShelves = [
-  "currentlyReading",
-  "wantToRead",
-  "read"
-]
 
 class BooksApp extends React.Component {
   state = {
@@ -365,7 +360,7 @@ class BooksApp extends React.Component {
       // }
 
       // quite simply only books that are on one of the shelves should be saved
-      const newBooks = prevState.books.filter((b) => bookShelves.includes(b.shelf))
+      const newBooks = prevState.books.filter((b) => Constants.BookShelves.includes(b.shelf))
 
       return { books: newBooks }
     })

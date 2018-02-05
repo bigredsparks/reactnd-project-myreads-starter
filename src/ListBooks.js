@@ -2,12 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Bookshelf from './Bookshelf'
-
-const bookShelves = [
-  "currentlyReading",
-  "wantToRead",
-  "read"
-]
+import * as Constants from './Constants'
 
 class ListBooks extends Component {
   static propType = {
@@ -25,7 +20,7 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            {bookShelves.map((shelf) => (
+            {Constants.BookShelves.map((shelf) => (
               <Bookshelf
                 key={shelf}
                 shelf={shelf}

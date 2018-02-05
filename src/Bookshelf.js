@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Book from './Book'
-
-const titleFromShelf = {
-  currentlyReading : 'Currently Reading',
-  wantToRead : 'Want to Read',
-  read : 'Read'
-}
+import * as Constants from './Constants'
 
 class Bookshelf extends Component {
   static propType = {
@@ -18,11 +13,10 @@ class Bookshelf extends Component {
   render() {
     const { shelf, books, onMoveBook } = this.props
     const shownBooks = books.filter((book) => book.shelf === shelf)
-    const bookshelfTitle = titleFromShelf[shelf]
 
     return (
       <div className="bookshelf" key={shelf}>
-        <h2 className="bookshelf-title">{bookshelfTitle}</h2>
+        <h2 className="bookshelf-title">{Constants.ShelfToTitleMap[shelf]}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
             {shownBooks.map((book) => (
