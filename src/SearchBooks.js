@@ -33,17 +33,19 @@ class SearchBooks extends Component {
     }
   }
 
+  // returns the books that matched the search criteria
+  // and merges them with books on shelf
+  mergeBooks = (matchedBooks, booksOnShelf) => {
+    return matchedBooks.map(matchedBook => 
+      booksOnShelf.find(book => matchedBook.id === book.id) || 
+      matchedBook)
+  }
+
   render() {
     const { books, onMoveBook } = this.props
     const { matchedBooks } = this.state
 
-    const shownBooks = matchedBooks
-
-    //let shownBooks = []
-    // if ( query ) {
-    //   const pattern = new RegExp(query, 'i')
-    //   shownBooks = books.filter((book) => pattern.test(book.title))
-    // }
+    const shownBooks = mergeBooks(matchBooks, books)
 
     return (
       <div className="search-books">
