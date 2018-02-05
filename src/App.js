@@ -5,6 +5,12 @@ import SearchBooks from './SearchBooks'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
+const bookShelves = [
+  "currentlyReading",
+  "wantToRead",
+  "read"
+]
+
 class BooksApp extends React.Component {
   state = {
     /**
@@ -354,9 +360,7 @@ class BooksApp extends React.Component {
       const newBooks = prevState.books.filter((b) => b.id !== book.id)
       
       // only add book if it is on my shelf
-      if (book.shelf === 'currentlyReading' ||
-          book.shelf === 'wantToRead' ||
-          book.shelf === 'read') {
+      if (bookShelves.includes(book.shelf)) {
         newBooks.push(book)
       }
 
