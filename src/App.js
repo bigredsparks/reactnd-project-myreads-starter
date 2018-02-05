@@ -356,13 +356,16 @@ class BooksApp extends React.Component {
       // update book       
       BooksAPI.update(book, book.shelf)
 
-      // remove moved book from list of books
-      const newBooks = prevState.books.filter((b) => b.id !== book.id)
+      // // remove moved book from list of books
+      // const newBooks = prevState.books.filter((b) => b.id !== book.id)
       
-      // only add book if it is on my shelf
-      if (bookShelves.includes(book.shelf)) {
-        newBooks.push(book)
-      }
+      // // only add book if it is on my shelf
+      // if (bookShelves.includes(book.shelf)) {
+      //   newBooks.push(book)
+      // }
+
+      // quite simply only books that are on one of the shelves should be saved
+      const newBooks = prevState.books.filter((b) => bookShelves.includes(b.shelf))
 
       return { books: newBooks }
     })
