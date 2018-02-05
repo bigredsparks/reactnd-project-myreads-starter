@@ -346,10 +346,20 @@ class BooksApp extends React.Component {
 
   moveBook = (book) => {
     this.setState((prevState) => {
+
+      // update book       
+      BooksAPI.update(book, book.shelf)
+
       // remove moved book from list of books
       const newBooks = prevState.books.filter((b) => b.id !== book.id)
-      // add moved book back into list
-      newBooks.push(book)
+      
+      // only add book if it is on my shelf
+      if (book.shelf === 'currentlyReading' ||
+          book.shelf === 'wantToRead' ||
+          book.shelf === 'read') {
+        newBooks.push(book)
+      }
+
       return { books: newBooks }
     })
   }
