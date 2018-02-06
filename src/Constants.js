@@ -5,7 +5,7 @@ export const BookShelves = [
   "read"
 ]
 
-// map shelfs to display title
+// map shelf to display title
 export const ShelfToTitleMap = {
   currentlyReading : 'Currently Reading',
   wantToRead : 'Want to Read',
