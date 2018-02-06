@@ -1,33 +1,21 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import BookshelfChanger from './BookshelfChanger'
 
-class Book extends Component {
-  static propType = {
-    book: PropTypes.object.isRequired,
-    onMoveBook: PropTypes.func.isRequired
-  }
-
-  render() {
-    const { book, onMoveBook } = this.props
-
-    return (
-      <div className="book">
-      <div className="book-top">
-        {(book.imageLinks) ?
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("' + book.imageLinks.thumbnail + '")' }}></div> :
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundColor: 'black' }}></div> 
-        }
-        <BookshelfChanger
-          book={book}
-          onMoveBook={onMoveBook}
-        />
-        </div>
-        <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.author ? book.authors.join(', ') : ''}</div>
-      </div>
-    )
-  }
-}
+const Book = (props) => (
+  <div className="book">
+  <div className="book-top">
+    {(props.book.imageLinks) ?
+      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("' + props.book.imageLinks.thumbnail + '")' }}></div> :
+      <div className="book-cover" style={{ width: 128, height: 193, backgroundColor: 'black' }}></div> 
+    }
+    <BookshelfChanger
+      book={props.book}
+      onMoveBook={props.onMoveBook}
+    />
+    </div>
+    <div className="book-title">{props.book.title}</div>
+    <div className="book-authors">{props.book.author ? props.book.authors.join(', ') : ''}</div>
+  </div>
+)
 
 export default Book
