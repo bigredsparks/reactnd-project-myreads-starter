@@ -11,18 +11,16 @@ class SearchBooks extends Component {
   }
 
   state = {
-    query : '',
-    matchedBooks : []
+    query : '', // current query
+    matchedBooks : [] // list of books that match query
   }
 
   updateQuery = (query) => {
     if ( query ) {
       BooksAPI.search(query).then((books) => {
-        console.log(books)
-
         this.setState({
           query: query.trim(),
-          matchedBooks: books.error ? [] : books
+          matchedBooks: Array.isArray(books) ? books : []
         })
       })
     } else {
@@ -36,8 +34,8 @@ class SearchBooks extends Component {
   // returns the books that matched the search criteria
   // and merges them with books on shelf
   mergeBooks = (matchedBooks, booksOnShelf) => {
-    return matchedBooks.map(matchedBook => 
-      booksOnShelf.find(book => matchedBook.id === book.id) || 
+    return matchedBooks.map(matchedBook =>
+      booksOnShelf.find(book => matchedBook.id === book.id) ||
       matchedBook)
   }
 
