@@ -16,8 +16,6 @@ class BookshelfChanger extends Component {
   render() {
     const { book } = this.props
 
-    //console.log('book:' + book.title + " shelf:" + book.shelf)
-
     return (
       <div className="book-shelf-changer">
       <select
