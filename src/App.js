@@ -20,13 +20,13 @@ class BooksApp extends React.Component {
   moveBook = (book) => {
     this.setState((prevState) => {
 
-      // update book       
+      // update book
       BooksAPI.update(book, book.shelf)
 
-      // remove moved book from list of books, if it exists
+      // remove moved book from bookshelf, if it exists
       const newBooks = prevState.books.filter((b) => b.id !== book.id)
-      
-      // only add book if it is on my shelf
+
+      // only add book if it is belongs on bookshelf
       if (Constants.BookShelves.includes(book.shelf)) {
         newBooks.push(book)
       }
