@@ -5,9 +5,9 @@ import BookshelfChanger from './BookshelfChanger'
 const Book = (props) => (
   <div className="book">
   <div className="book-top">
-    {(props.book.imageLinks && props.book.imageLinks.thumbnail) ?
-      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("' + props.book.imageLinks.thumbnail + '")' }}></div> :
-      <div className="book-cover" style={{ width: 128, height: 193, backgroundColor: 'black' }}></div>
+    {(props.book.imageLinks && props.book.imageLinks.thumbnail)
+      ? <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("' + props.book.imageLinks.thumbnail + '")' }}></div>
+      : <div className="book-cover" style={{ width: 128, height: 193, backgroundColor: 'black' }}></div>
     }
     <BookshelfChanger
       book={props.book}

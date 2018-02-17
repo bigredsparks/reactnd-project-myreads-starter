@@ -15,7 +15,7 @@ class BookshelfChanger extends Component {
 
   render() {
     const { book } = this.props
-
+    // books default to the "none" shelf
     return (
       <div className="book-shelf-changer">
       <select

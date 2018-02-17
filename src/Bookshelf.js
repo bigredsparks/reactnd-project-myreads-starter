@@ -11,7 +11,11 @@ class Bookshelf extends Component {
   }
 
   render() {
+    // technically, this could have been a stateless functional component
+    // but combining the map and filter in the jsx seemed to make it less readable
     const { shelf, books, onMoveBook } = this.props
+
+    // only show books for the specified shelf
     const shownBooks = books.filter((book) => book.shelf === shelf)
 
     return (
